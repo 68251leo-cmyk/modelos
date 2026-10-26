@@ -2,6 +2,8 @@ from src.modelos.modelo_google import ModeloGoogle
 from src.modelos.modelo_groq import ModeloGroq
 from src.modelos.modelo_local import ModeloLocal
 from src.modelos.modelo_local2 import ModeloLocal2
+from src.modelos.prompt01 import Prompt01
+from src.modelos.prompt02 import Prompt02
 
 import os
 from rich.console import Console
@@ -26,6 +28,8 @@ class MenuPrincipal():
         print("2. Modelo Groq API KEY")
         print("3. Modelo Local")
         print("4. Modelo Local 2")
+        print("5. Prompt basico")
+        print("6. Prompt basico 02")
         print("0. Salir")
 
     def ejecutar_opcion(self):
@@ -63,11 +67,23 @@ class MenuPrincipal():
                 print("Respuesta del modelo local:", respuesta, "\n")
                 self.console.print(Markdown(respuesta))
 
+            elif self.opcion == "5":
+                prompt01 = Prompt01()
+                respuesta = prompt01.generar_respuestas()
+                print("Respuesta del modelo local:", respuesta, "\n")
+                self.console.print(Markdown(respuesta))
+            
+            elif self.opcion == "6":
+                prompt02 = Prompt02()
+                respuesta = prompt02.generar_respuestas()
+                print("Respuesta del modelo local:", respuesta, "\n")
+                self.console.print(Markdown(respuesta))
+
 
             elif self.opcion == "0":
                 print("Saliendo del programa...")
                 break
 
             else:
-                print("Opción inválida. Por facor, seleccione una opción válida.")
+                print("Opción inválida. Por favor, seleccione una opción válida.")
             self.pausar()
