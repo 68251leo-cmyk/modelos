@@ -1,6 +1,7 @@
 from src.modelos.modelo_google import ModeloGoogle
 from src.modelos.modelo_groq import ModeloGroq
 from src.modelos.modelo_local import ModeloLocal
+from src.modelos.modelo_local2 import ModeloLocal2
 
 import os
 from rich.console import Console
@@ -56,7 +57,7 @@ class MenuPrincipal():
                 self.console.print(Markdown(respuesta))
             
             elif self.opcion == "4":
-                modelo_local = ModeloLocal()
+                modelo_local = ModeloLocal2()
                 prompt = input("Ingrese su prompt: ")
                 respuesta = modelo_local.generar_respuestas(prompt)
                 print("Respuesta del modelo local:", respuesta, "\n")
