@@ -4,6 +4,8 @@ from src.modelos.modelo_local import ModeloLocal
 from src.modelos.modelo_local2 import ModeloLocal2
 from src.modelos.prompt01 import Prompt01
 from src.modelos.prompt02 import Prompt02
+from src.modelos.prompt03 import Prompt03
+from src.modelos.modelo_conectar import PromptConexion
 
 import os
 from rich.console import Console
@@ -30,6 +32,8 @@ class MenuPrincipal():
         print("4. Modelo Local 2")
         print("5. Prompt basico")
         print("6. Prompt basico 02")
+        print("7. Prompt basico 03")
+        print("8. Prompt conexion")
         print("0. Salir")
 
     def ejecutar_opcion(self):
@@ -79,6 +83,17 @@ class MenuPrincipal():
                 print("Respuesta del modelo local:", respuesta, "\n")
                 self.console.print(Markdown(respuesta))
 
+            elif self.opcion == "7":
+                prompt03 = Prompt03()
+                respuesta = prompt03.generar_respuestas()
+                print("Respuesta del modelo local:", respuesta, "\n")
+                self.console.print(Markdown(respuesta))
+
+            elif self.opcion == "8":
+                prompt = PromptConexion()
+                respuesta = prompt.generar_respuestas()
+                print("Respuesta del modelo local:", respuesta, "\n")
+                self.console.print(Markdown(respuesta))
 
             elif self.opcion == "0":
                 print("Saliendo del programa...")

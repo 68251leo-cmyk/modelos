@@ -8,7 +8,7 @@ class Prompt03:
 
 
     def generar_respuestas(self):
-        plantilla = ChatPromptTemplate.from_messages([
+        plantilla = ChatPromptTemplate.from_messages([(
             "system",
             """
             Eres un profesor universitario de programacion.
@@ -16,11 +16,14 @@ class Prompt03:
             - responde siempre en español
             - utiliza lenguaje sencillo
             - explica los conceptos paso a paso
-            - incluye en"""
-        ])
+            - incluye un ejemplo en python
+            - No utilices tecnicismos innecesarios"""
+        ),
+        (
+            "human",
+            "Explicame el siguiente tema {tema}"
+        )])
 
-        prompt = plantilla.format(tema="inteligencia artificila",nivel="universitario")
-        print("Prompt generado: ", prompt)
-        respuesta = self.modelo.invoke(prompt)
-        print("terminado")
-        return respuesta.text
+        mensajes = plantilla.invoke({"tema":"estructuras condicionales"})
+        respuesta = self.modelo.invoke(mensajes)
+        return respuesta.content
