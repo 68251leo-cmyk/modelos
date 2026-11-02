@@ -6,6 +6,9 @@ from src.modelos.prompt01 import Prompt01
 from src.modelos.prompt02 import Prompt02
 from src.modelos.prompt03 import Prompt03
 from src.modelos.modelo_conectar import PromptConexion
+from src.modelos.modelo_sin_memoria import ModeloSinMemoria
+from src.modelos.modelo_con_memoria import ModeloConMemoria
+from src.modelos.modelo_persistencia import ModeloPersistencia
 
 import os
 from rich.console import Console
@@ -34,6 +37,9 @@ class MenuPrincipal():
         print("6. Prompt basico 02")
         print("7. Prompt basico 03")
         print("8. Prompt conexion")
+        print("9. Modelo sin memoria")
+        print("10. Modelo con memoria")
+        print("11. Modelo con persistencia")
         print("0. Salir")
 
     def ejecutar_opcion(self):
@@ -89,6 +95,18 @@ class MenuPrincipal():
                 print("Respuesta del modelo local:", respuesta, "\n")
                 self.console.print(Markdown(respuesta))
 
+            elif self.opcion == "9":
+                prompt = ModeloSinMemoria()
+                prompt.generar_respuestas()
+            
+            elif self.opcion == "10":
+                prompt = ModeloConMemoria()
+                prompt.generar_respuestas()
+
+            elif self.opcion == "11":
+                prompt = ModeloPersistencia()
+                prompt.generar_respuestas()
+                
             elif self.opcion == "8":
                 prompt = PromptConexion()
                 respuesta = prompt.generar_respuestas()
